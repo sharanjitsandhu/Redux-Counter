@@ -18,6 +18,10 @@ export const increment = num => {
   };
 };
 
-export const decrement = () => {
+export const decrement = num => {
   // Fill in this function
+  return {
+    type: DECREMENT,
+    payload: num
+  };
 };
