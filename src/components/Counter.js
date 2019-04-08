@@ -1,19 +1,25 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { increment, decrement, incrementIfOdd } from "../actions";
+import {
+  increment,
+  decrement,
+  incrementIfOdd,
+  incrementAsync
+} from "../actions";
 
 class Counter extends Component {
-  incrementIfOdd = count => {
+  incrementIfOdd = () => {
     // Stretch Problem: Implement an increment function that
     // only increments if the counter value is odd
     if (this.props.count % 2 !== 0) {
-      return this.props.incrementIfOdd();
+      return this.props.incrementIfOdd(this.props.count);
     }
   };
 
   incrementAsync = () => {
     // Stretch Problem: Implement an increment function that
     // increments after waiting for one second
+    setTimeout(() => this.props.incrementAsync(this.props.count), 1000);
   };
 
   render() {
@@ -39,13 +45,7 @@ class Counter extends Component {
         </button>
         {/* Uncomment these button tags if you got
                 around to implementing the extra credit functions */}
-        <button
-          onClick={() => {
-            this.props.incrementIfOdd(this.props.count);
-          }}
-        >
-          Increment if odd
-        </button>
+        <button onClick={this.incrementIfOdd}>Increment if odd</button>
         <button onClick={this.incrementAsync}>Increment async</button>
       </p>
     );
@@ -71,5 +71,5 @@ const mapStateToProps = state => {
 // makes itself known to this component.
 export default connect(
   mapStateToProps,
-  { increment, decrement, incrementIfOdd }
+  { increment, decrement, incrementIfOdd, incrementAsync }
 )(Counter);

@@ -1,6 +1,7 @@
 export const INCREMENT = "INCREMENT";
 export const DECREMENT = "DECREMENT";
 export const INCREMENT_IF_ODD = "INCREMENT_IF_ODD";
+export const INCREMENT_ASYNC = "INCREMENT_ASYNC";
 
 // Our action creators will return
 // an action packet that our reducer will
@@ -11,6 +12,7 @@ export const INCREMENT_IF_ODD = "INCREMENT_IF_ODD";
 // is left to the reducer(s).
 
 export const increment = num => {
+  console.log("increment:", num);
   // Fill in this function
   return {
     type: INCREMENT,
@@ -19,6 +21,7 @@ export const increment = num => {
 };
 
 export const decrement = num => {
+  console.log("decrement:", num);
   // Fill in this function
   return {
     type: DECREMENT,
@@ -27,10 +30,19 @@ export const decrement = num => {
 };
 
 export const incrementIfOdd = num => {
-  console.log("fired:", num);
+  console.log("incrementIfOdd:", num);
   // Fill in this function
   return {
     type: INCREMENT_IF_ODD,
+    payload: num
+  };
+};
+
+export const incrementAsync = num => {
+  console.log("incrementAsync:", num);
+  // Fill in this function
+  return {
+    type: INCREMENT_ASYNC,
     payload: num
   };
 };
