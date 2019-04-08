@@ -1,4 +1,4 @@
-import { INCREMENT, DECREMENT } from "../actions";
+import { INCREMENT, DECREMENT, INCREMENT_IF_ODD } from "../actions";
 
 const initialState = {
   count: 0
@@ -17,6 +17,9 @@ export default (state = initialState, action) => {
     case DECREMENT:
       // Fill in the body of this case
       return { ...state, count: action.payload - 1 };
+    case INCREMENT_IF_ODD:
+      // Fill in the body of this case
+      return { ...state, count: action.payload + 1 };
     default:
       return state;
   }
