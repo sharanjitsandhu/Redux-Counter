@@ -7,6 +7,8 @@ import {
   incrementAsync
 } from "../actions";
 
+import "../components/Counter.css";
+
 class Counter extends Component {
   incrementIfOdd = () => {
     // Stretch Problem: Implement an increment function that
@@ -27,27 +29,37 @@ class Counter extends Component {
     // Upon clicking these buttons, the count
     // should decrement or increment accordingly
     return (
-      <p>
-        Clicked: {this.props.count} times
-        <button
-          onClick={() => {
-            this.props.increment(this.props.count);
-          }}
-        >
-          +
-        </button>
-        <button
-          onClick={() => {
-            this.props.decrement(this.props.count);
-          }}
-        >
-          -
-        </button>
-        {/* Uncomment these button tags if you got
+      <div className="counter-wrapper">
+        <div className="clicked">Clicked: {this.props.count} times</div>
+        <div className="button-wrapper">
+          <button
+            className="button"
+            onClick={() => {
+              this.props.increment(this.props.count);
+            }}
+          >
+            +
+          </button>
+          <button
+            className="button"
+            onClick={() => {
+              this.props.decrement(this.props.count);
+            }}
+          >
+            -
+          </button>
+        </div>
+        <div className="button-wrapper">
+          {/* Uncomment these button tags if you got
                 around to implementing the extra credit functions */}
-        <button onClick={this.incrementIfOdd}>Increment if odd</button>
-        <button onClick={this.incrementAsync}>Increment async</button>
-      </p>
+          <button className="button" onClick={this.incrementIfOdd}>
+            Increment if odd
+          </button>
+          <button className="button" onClick={this.incrementAsync}>
+            Increment async
+          </button>
+        </div>
+      </div>
     );
   }
 }
